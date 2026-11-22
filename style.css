@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --rouge-1: #9e2a2b;       /* Bordeaux chaleureux */
+    --rouge-2: #540b0e;       /* Bordeaux profond */
+    --fond-papier: #faf8f5;   /* Blanc cassé éditorial */
+    --surface: #ffffff;       /* Blanc pur pour les cartes */
+    --texte-principal: #2b2623;
+    --texte-secondaire: #665e59;
+    --bordure-douce: #e6e0d8;
+    --rayon: 12px;
+    --ombre: 0 8px 24px rgba(43, 38, 35, 0.06);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   1. STYLES DE BASE (MOBILE FIRST < 768px)
+   ========================================= */
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--texte-principal);
+    background-color: var(--fond-papier);
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: var(--surface);
+    overflow: hidden;
+}
+
+/* --- EN-TÊTE & NAVIGATION (MOBILE) --- */
+header {
+    background-color: var(--surface);
+}
+
+.header-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 16px;
+}
+
+header h1 {
+    font-family: 'Lora', serif;
+    font-size: 24px;
+    color: var(--rouge-1);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+nav.main-nav {
+    width: 100%;
+}
+
+nav.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}
+
+nav.main-nav a {
+    display: inline-block;
+    color: var(--texte-secondaire);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 4px; /* Zone tactile plus confortable sur mobile */
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+nav.main-nav a:hover,
+nav.main-nav a.active {
+    color: var(--rouge-1);
+    border-bottom-color: var(--rouge-1);
+}
+
+.bandeau {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- CONTENU PRINCIPAL (MOBILE) --- */
+main {
+    padding: 28px 20px;
+}
+
+h2 {
+    font-family: 'Lora', serif;
+    font-size: 26px;
+    line-height: 1.25;
+    color: var(--texte-principal);
+    margin-bottom: 24px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--rouge-1);
+    border-radius: 2px;
+}
+
+h3 {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    color: var(--rouge-2);
+    margin: 28px 0 10px 0;
+}
+
+p {
+    color: var(--texte-secondaire);
+    margin-bottom: 16px;
+    max-width: 72ch;
+}
+
+main a {
+    display: inline-block;
+    color: var(--rouge-1);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 0;
+    transition: transform 0.2s ease;
+}
+
+main a:hover {
+    transform: translateX(4px);
+}
+
+/* --- CARTES DE LIVRES (COUPS DE CŒUR) --- */
+.sub-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.sub-menu a {
+    background-color: var(--fond-papier);
+    border: 1px solid var(--bordure-douce);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: var(--texte-principal);
+}
+
+.sub-menu a:hover {
+    background-color: var(--rouge-1);
+    color: #fff;
+    border-color: var(--rouge-1);
+    transform: none;
+}
+
+.books-container {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
+    gap: 16px;
+    margin: 16px 0 32px 0;
+}
+
+.book-card {
+    background-color: var(--fond-papier);
+    border: 1px solid var(--bordure-douce);
+    border-radius: var(--rayon);
+    padding: 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-card h4 {
+    font-family: 'Lora', serif;
+    color: var(--texte-principal);
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.book-card .author-date {
+    font-size: 13px;
+    color: var(--texte-secondaire);
+    margin-bottom: 12px;
+}
+
+.book-card .genre {
+    display: inline-block;
+    background-color: rgba(158, 42, 43, 0.1);
+    color: var(--rouge-1);
+    font-weight: 600;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* --- CITATIONS (EXTRAITS CHOISIS) --- */
+.citation-card {
+    max-width: 680px;
+    background-color: var(--fond-papier);
+    border-left: 4px solid var(--rouge-1);
+    border-radius: 0 var(--rayon) var(--rayon) 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--texte-principal);
+}
+
+/* --- HORAIRES --- */
+.horaires-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
+    gap: 8px;
+    max-width: 650px;
+    margin-top: 16px;
+}
+
+.horaires-list li {
+    background-color: var(--fond-papier);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--bordure-douce);
+    font-size: 14px;
+}
+
+/* --- PIED DE PAGE (MOBILE) --- */
+footer {
+    background-color: #2b2623;
+    color: #e6e0d8;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 24px 20px;
+}
+
+footer .address {
+    text-align: left;
+    color: #b8afa8;
+    line-height: 1.5;
+}
+
+/* =========================================
+   2. TABLETTE & GRANDS ÉCRANS (>= 768px)
+   ========================================= */
+
+@media (min-width: 768px) {
+    .wrapper {
+        width: 92%;
+        margin: 40px auto;
+        border-radius: var(--rayon);
+        box-shadow: var(--ombre);
+        border: 1px solid var(--bordure-douce);
+    }
+
+    .header-top {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 40px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav.main-nav {
+        width: auto;
+    }
+
+    nav.main-nav ul {
+        gap: 24px;
+    }
+
+    .bandeau {
+        height: 280px;
+    }
+
+    main {
+        padding: 48px 60px;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+
+    h2::after {
+        width: 60px;
+    }
+
+    h3 {
+        font-size: 22px;
+        margin: 32px 0 12px 0;
+    }
+
+    .books-container {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        margin: 20px 0 40px 0;
+    }
+
+    .book-card {
+        padding: 24px;
+    }
+
+    .book-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--ombre);
+        background-color: var(--surface);
+    }
+
+    .citation-card {
+        padding: 20px 28px;
+        margin: 20px 0;
+        font-size: 17px;
+    }
+
+    .horaires-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+    }
+
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 28px 60px;
+    }
+
+    footer .address {
+        text-align: right;
+    }
+}
